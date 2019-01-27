@@ -1,0 +1,115 @@
+import java.util.Random;
+
+public class room {
+    private String[][] roomTile;
+    private int enemyCount, rockCount, chestCount, coinCount, fireCount, keyCount, halfHeart, fullHeart, heartCount;
+    private int maxEnemy = 2, maxChest = 1, maxCoin = 4, maxKey = 1;
+    private Random rand;
+    private int holder, heart;
+    public room(int floor){
+        roomTile = new String[11][7];
+        maxEnemy += floor;
+    }
+    
+    public void spawnPath(){
+        for(int y = 0; y < 7; y++){
+            for(int x = 0; x < 11; x++){
+                roomTile[x][y] = "  ";
+                if(x == 5){
+                    roomTile[x][y] = "p ";
+                }
+                if(y == 3){
+                    roomTile[x][y] = "p ";
+                }
+            }
+        }
+    }
+    
+    public void spawn(){
+        for(int y = 0; y < 7; y++){
+            for(int x = 0; x < 11; x++){
+                if(x != 5 && y != 3){
+                    rand = new Random();
+                    holder = rand.nextInt(1000) + 1;
+                    if(holder <= 700){
+                        roomTile[x][y] = "p ";
+                    }
+                    else if(holder > 700 && holder < 750){
+                        if(enemyCount < maxEnemy){
+                            roomTile[x][y] = "e ";
+                            enemyCount++;
+                        }
+                        else
+                            roomTile[x][y] = "p ";
+                    }
+                    else if(holder >= 750 && holder < 850){
+                        roomTile[x][y] = "R ";
+                        rockCount++;
+                    }
+                    else if(holder >= 850 && holder < 950){
+                        roomTile[x][y] = "F ";
+                        fireCount++;
+                    }
+                    else if(holder >= 950 && holder <= 990){
+                        if(coinCount < maxCoin){
+                            roomTile[x][y] = "c ";
+                            coinCount++;
+                        }
+                        else
+                            roomTile[x][y] = "p ";
+                    }
+                    else if (holder >990 && holder < 999){
+                        if(heartCount < 1){
+                            Random heartRand = new Random();
+                            heart = heartRand.nextInt(100) + 1;
+                            if(heart <= 30){
+                                roomTile[x][y] = "fh";
+                                fullHeart++;
+                            }
+                            else{
+                                roomTile[x][y] = "hh";
+                                halfHeart++;
+                            }
+                            heartCount++;
+                        }
+                        else
+                            roomTile[x][y] = "p ";
+                    }
+                    else if(holder == 999){
+                        if(keyCount < maxKey){
+                            roomTile[x][y] = "k ";
+                            keyCount++;
+                        }
+                        else
+                            roomTile[x][y] = "p ";
+                    }
+                    else{
+                        if(chestCount < maxChest){
+                            roomTile[x][y] = "ch";
+                            chestCount++;
+                        }
+                        else
+                            roomTile[x][y] = "p ";
+                    }
+                }
+            }
+        }
+    }
+    
+    public void printRoom(){
+        for(int y = 0; y < 7; y++){
+            for(int x = 0; x < 11; x++){
+                System.out.print(roomTile[x][y]);
+            }
+            System.out.println();
+        }
+        System.out.println("Chest: " + chestCount);
+        System.out.println("Coin: " + coinCount);
+        System.out.println("Enemy: " + enemyCount);
+        System.out.println("Rock: " + rockCount);
+        System.out.println("Firepit: " + fireCount);
+        System.out.println("Key: " + keyCount);
+        System.out.println("Half heart: " + halfHeart);
+        System.out.println("Full heart: " + fullHeart);
+    }
+}
