@@ -9,6 +9,9 @@ public class room {
     public room(int floor){
         roomTile = new String[11][7];
         maxEnemy += floor;
+        spawnPath();
+        spawn();
+        printRoom();
     }
     
     public void spawnPath(){
