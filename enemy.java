@@ -1,4 +1,4 @@
-public class enemy extends character
+public class Enemy extends Character
 {
 
 } 
