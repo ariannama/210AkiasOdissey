@@ -1,31 +1,21 @@
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 
-public class Character extends Sprite {
-    private final String charName = "Akia";
-
+public class Character extends Sprite 
+{
+    
     private Texture skin;
-    //private Item currentItems = new Item[amountOfItems]; --> Change to list later
-    //private Weapon currentWeapon;
-
-    private double percentageLuck;
-
     private int maxHealth;
     private int currentHealth;
     private int baseDamage;
     private int moveSpeed;
 
     //Constructor with preset stats
-    public Character(Texture t) {
-        percentageLuck = 20;
-
+    public Character(Texture t) 
+    {
         maxHealth = 10;
         baseDamage = 10;
         moveSpeed = 50;
-
-        skin = t;
-        skin.setSmooth(true);
-        setTexture(skin);
     }
 
     //Constructor to set your own stats
@@ -33,7 +23,6 @@ public class Character extends Sprite {
         this.moveSpeed = moveSpeed;
         this.baseDamage = baseDamage;
         this.currentHealth = currentHealth;
-        this.percentageLuck = percentageLuck;
     }
 
     public void increaseHealth(int healthGain) {
