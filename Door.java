@@ -14,7 +14,10 @@ public class Door {
      * Its order is: open, closed, locked.
      */
     private boolean[] doorState = new boolean[3];
-    private String[] doorPosition = new String[4];
+    /** doorPosition is an array of booleans which describes the current position of the door.
+     * Its order is: north, west, south, east.
+     */
+    private boolean[] doorPosition = new boolean[4];
     //array of imgs for open doors
     //array of imgs for closed doors
     //array of imgs for locked doors
