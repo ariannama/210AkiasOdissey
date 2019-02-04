@@ -23,9 +23,9 @@ public class Menu {
 
     public Menu(){
         VideoMode vm = new VideoMode(1100, 700);
-        RenderWindow w = new RenderWindow(vm, "Akia's Odissey", WindowStyle.CLOSE);
+        RenderWindow w = new RenderWindow(vm, "Akia's Odyssey", WindowStyle.CLOSE);
         Texture img = new Texture();
-        Path p = Paths.get("H:\\tryBG.jpg");
+        Path p = Paths.get("H:\\bg.jpg");
         try {
             img.loadFromFile(p);
         } catch (IOException e) {
@@ -33,6 +33,8 @@ public class Menu {
         }
         Sprite sp = new Sprite();
         sp.setTexture(img);
+        RectangleShape b1 = new RectangleShape();
+        RectangleShape b2 = new RectangleShape();
         while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
                 if(event.type == Event.Type.CLOSED){
