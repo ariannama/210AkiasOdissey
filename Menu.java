@@ -14,25 +14,36 @@ import org.jsfml.graphics.*;
 /**
  * <h1>Menu</h1>
  *
- * The menu class represents the menu of the game.
+ * The menu class outlines the appearance and behaviour of the game menu - the first screen
+ * the player is greeted with when opening the game.
  *
  * @author: Arianna Marrocu
  */
 public class Menu {
 
     public Menu(){
-        VideoMode vm = new VideoMode(500, 500);
-        RenderWindow w = new RenderWindow(vm, "Akia's Odissey", WindowStyle.DEFAULT);
-        w.create(vm, "Akia's Odissey");
-        w.setVisible(true);
-        w.display();
-        while(w.isOpen()){
+        VideoMode vm = new VideoMode(1100, 700);
+        RenderWindow w = new RenderWindow(vm, "Akia's Odissey", WindowStyle.CLOSE);
+        Texture img = new Texture();
+        Path p = Paths.get("H:\\tryBG.jpg");
+        try {
+            img.loadFromFile(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Sprite sp = new Sprite();
+        sp.setTexture(img);
+        while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
                 if(event.type == Event.Type.CLOSED){
                     w.close();
                 }
             }
+            w.draw(sp);
+            w.display();
         }
+
+
 
     }
 
