@@ -36,8 +36,11 @@ public class Menu {
 
         Texture bg = new Texture();
         Texture logo = new Texture();
+        Vector2f l1 = new Vector2f(708, 79);
+        RectangleShape t1 = new RectangleShape(l1);
+        t1.setPosition(196, 40);
         Path p2 = Paths.get("H:\\Akia-images\\bg.jpg");
-        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY.png");
+        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY (2).png");
         try {
             bg.loadFromFile(p2);
             logo.loadFromFile(p3);
@@ -45,9 +48,8 @@ public class Menu {
             e.printStackTrace();
         }
         Sprite backg = new Sprite();
-        Sprite title = new Sprite();
         backg.setTexture(bg);
-        title.setTexture(logo);
+        t1.setTexture(logo);
 
         Vector2f r1 = new Vector2f(200, 100);
         RectangleShape b1 = new RectangleShape(r1);
@@ -74,7 +76,7 @@ public class Menu {
                 }
             }
             w.draw(backg);
-            w.draw(title);
+            w.draw(t1);
             w.draw(b1);
             w.draw(b2);
             w.display();
