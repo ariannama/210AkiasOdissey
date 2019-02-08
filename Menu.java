@@ -26,35 +26,46 @@ public class Menu {
         RenderWindow w = new RenderWindow(vm, "Akia's Odyssey", WindowStyle.CLOSE);
 
         Image img = new Image();
-        Path p1 = Paths.get("H:\\icon.png");
+        Path p1 = Paths.get("H:\\Akia-images\\icon.png");
         try {
             img.loadFromFile(p1);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        w.setIcon(img);
 
         Texture bg = new Texture();
-        Path p2 = Paths.get("H:\\bg.jpg");
+        Texture logo = new Texture();
+        Path p2 = Paths.get("H:\\Akia-images\\bg.jpg");
+        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY.png");
         try {
             bg.loadFromFile(p2);
+            logo.loadFromFile(p3);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Sprite sp = new Sprite();
-        sp.setTexture(bg);
+        Sprite backg = new Sprite();
+        Sprite title = new Sprite();
+        backg.setTexture(bg);
+        title.setTexture(logo);
 
         Vector2f r1 = new Vector2f(200, 100);
         RectangleShape b1 = new RectangleShape(r1);
         RectangleShape b2 = new RectangleShape(r1);
-        b1.setPosition(550, 350);
-        b2.setPosition(550, 450);
-        b1.setFillColor(Color.YELLOW);
-        b2.setFillColor(Color.YELLOW);
-        b1.setOutlineThickness(5);
-        b2.setOutlineThickness(5);
-        b1.setOutlineColor(Color.BLACK);
-        b2.setOutlineColor(Color.BLACK);
-        w.setIcon(img);
+        b1.setPosition(450, 300);
+        b2.setPosition(450, 399);
+        Texture but1 = new Texture();
+        Texture but2 = new Texture();
+        Path p4 = Paths.get("H:\\Akia-images\\button_start.png");
+        Path p5 = Paths.get("H:\\Akia-images\\button_continue.png");
+        try {
+            but1.loadFromFile(p4);
+            but2.loadFromFile(p5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        b1.setTexture(but1);
+        b2.setTexture(but2);
 
         while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
@@ -62,7 +73,8 @@ public class Menu {
                     w.close();
                 }
             }
-            w.draw(sp);
+            w.draw(backg);
+            w.draw(title);
             w.draw(b1);
             w.draw(b2);
             w.display();
