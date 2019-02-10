@@ -1,83 +1,79 @@
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 
-public class Character extends Sprite {
-    private final String charName = "Akia";
+public abstract class Character extends Entity{
 
-    private Texture skin;
-    //private Item currentItems = new Item[amountOfItems]; --> Change to list later
-    //private Weapon currentWeapon;
-
-    private double percentageLuck;
-
-    private int currentHealth;
-    private int baseDamage;
+    private int damage;
     private int moveSpeed;
+    private double currentHealth;
+    private int maxHealth;
 
-    //Constructor with preset stats
-    public Character(Texture t) {
-        percentageLuck = 20;
+    public Character(Sprite s, Texture t, String id,  int dmg, int mS, double cH, int maxH){
+        super(s, t, id);
+        this.damage = dmg;
+        this.moveSpeed = mS;
+        this.currentHealth = cH;
+        this.maxHealth = maxH;
+    }
 
-        currentHealth = 6;
-        baseDamage = 10;
-        moveSpeed = 50;
+    public abstract void move();
 
-        skin = t;
-        skin.setSmooth(true);
-        setTexture(skin);
+    public void calcMove(){
+        float x = getSpriteX();
+        float y = getSpriteY();
+
+        int dx = 2;
+        int dy = 2;
+
+        x += dx;
+        y += dy;
+
+        //LEFT
+        if (x <= 35)
+        { dx *= 2; sprite.setPosition(x , getSpriteY()); }
+
+        //RIGHT
+        if (x >= 950)
+        { dx *= -2;  sprite.setPosition(x + dx , getSpriteY()); }
+
+        //TOP
+        if (y <= 0)
+        {dy *= 2;  sprite.setPosition(getSpriteX() ,y);}
+
+        //BOTTOM
+        if (y >= 630)
+        { dy *= -2;  sprite.setPosition(getSpriteX() ,y + dy); }
+
 
     }
 
-    //Constructor to set your own stats
-    public Character(int moveSpeed, int baseDamage, int currentHealth, double percentageLuck) {
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setMoveSpeed(int moveSpeed) {
         this.moveSpeed = moveSpeed;
-        this.baseDamage = baseDamage;
-        this.currentHealth = currentHealth;
-        this.percentageLuck = percentageLuck;
     }
 
-    public void changeSkin(Texture t) {
-        skin = t;
-        setTexture(skin);
+    public void setCurrentHealth(double currentHealth) {
+        this.currentHealth = currentHealth;
     }
-    public void increaseHealth(int healthGain) {
-        currentHealth += healthGain;
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
-    public void loseHealth(int healthLoss){
-        currentHealth -= healthLoss;
-    }
-    public void increaseDamage(int dmgIncrease){
-        baseDamage += dmgIncrease;
-    }
-    public void increaseMoveSpeed(int moveSpeedIncrease){
-        moveSpeed += moveSpeedIncrease;
-    }
-    public void increaseLuck(double luckIncrease) {
-        percentageLuck += luckIncrease;
-    }
-    /* Implemented later
-    public void setWeapon(Weapon w){
-        currentWeapon = w;
-    }
-    public void addItem(Item i){
-        itemList.add(i);
-    }
-    */
-    public int getCurrentHealth(){
-        return currentHealth;
-    }
-    public int getBaseDamage(){
-        return baseDamage;
-    }
-    public int getMoveSpeed(){
+
+    public int getDamage() { return damage; }
+
+    public int getMoveSpeed() {
         return moveSpeed;
     }
-    public double getLuck(){
-        return percentageLuck;
+
+    public double getCurrentHealth() {
+        return currentHealth;
     }
 
-    @Override
-    public String toString(){
-      return "Name: "+ charName + "\nLuck: " + percentageLuck + "\nCurrent Health: "+ currentHealth + "\nMove Speed " + moveSpeed + "\nBase Damage: " + baseDamage + "\nSkin: " + skin;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 }
