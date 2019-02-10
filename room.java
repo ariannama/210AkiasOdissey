@@ -1,4 +1,3 @@
-package pkg210project;
 import java.util.Random;
 
 public class room {
