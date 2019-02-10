@@ -16,7 +16,7 @@ public class Interface{
         int screenHeight = 768;
 
         RenderWindow window = new RenderWindow(new VideoMode(screenWidth, screenHeight), "Akia's Oddysey", WindowStyle.CLOSE);
-        
+
         Texture imgTexture = new Texture();
         Texture back = new Texture();
         Texture leftTexture = new Texture();
