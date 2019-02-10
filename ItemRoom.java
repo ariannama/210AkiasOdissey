@@ -1,5 +1,3 @@
-package pkg210project;
-
 public class ItemRoom extends room{
     private String[][] roomTile;
     public ItemRoom(){
