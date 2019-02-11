@@ -28,31 +28,7 @@ public class Player extends Character {
         this.w = w;
     }
 
-    public void move() {
-        if(Keyboard.isKeyPressed(Keyboard.Key.UP))
-        {
-            sprite.move(0, -2);
-            //sprite.setTexture(texture);
-        }
-        if(Keyboard.isKeyPressed(Keyboard.Key.DOWN))
-        {
-            sprite.move(0, 2);
-            //sprite.setTexture(texture);
-        }
-        if(Keyboard.isKeyPressed(Keyboard.Key.LEFT))
-        {
-            sprite.move(-2, 0);
-           // sprite.setTexture(texture);
-        }
-        if(Keyboard.isKeyPressed(Keyboard.Key.RIGHT))
-        {
-            sprite.move(2, 0);
-            //sprite.setTexture(texture);
-        }
-        if(Keyboard.isKeyPressed(Keyboard.Key.SPACE))
-        {
-            firing = true;
-        }
+    public void move(){
     }
     public void collision(){
 

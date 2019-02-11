@@ -24,8 +24,8 @@ public abstract class Character extends Entity{
         float x = getSpriteX();
         float y = getSpriteY();
 
-        int dx = 10;
-        int dy = 10;
+        int dx = 5;
+        int dy = 5;
 
         x += dx;
         y += dy;

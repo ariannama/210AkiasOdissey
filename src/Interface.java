@@ -66,7 +66,7 @@ public class Interface{
         Player p = new Player(img, imgTexture, "Akia", 5, 1, 5, 5, 5,5, window);
         Ranged r = new Ranged(enemy, imgTexture, "Akia", 5, 1, 5, 5);
 
-        window.setFramerateLimit(30);
+        window.setFramerateLimit(60);
         long startTime = 0;
         long endTime = 0;
         long totalTime = 0;
@@ -74,32 +74,8 @@ public class Interface{
         while (window.isOpen()) {
             for (Event e : window.pollEvents()) {
                 p.calcMove();
-                if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
-                    window.close();
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.UP))
-                {
-                    p.sprite.move(0, -10);
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.DOWN))
-                {
-                    p.sprite.move(0, 10);
-                    //sprite.setTexture(texture);
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.LEFT))
-                {
-                    p.sprite.move(-10, 0);
-                    // sprite.setTexture(texture);
-                }
                 if(Keyboard.isKeyPressed(Keyboard.Key.RIGHT))
                 {
-                    p.sprite.move(10, 0);
-
-                }
-
-                if(Keyboard.isKeyPressed(Keyboard.Key.SPACE))
-                {
-
                     if (totalTime > 400) {
                         startTime = System.nanoTime() / 1000000;
                         Projectile projectile = new Projectile(new Sprite(bullet), bullet, "1", 2);
@@ -110,25 +86,9 @@ public class Interface{
                 }
             }
 
-
             window.clear();
             window.draw(background);
-            /*
-            if(p.isFiring() == true){
-                Projectile projectile = new Projectile(b, bullet, "1", 2);
-                projectile.sprite.setPosition(p.sprite.getPosition());
-                bullets.add(projectile);
-                p.setFiring(false);
-            }
 
-            for (int a = 0; a < bullets.size(); a++) {
-                window.draw(bullets.get(a).sprite);
-                bullets.get(a).sprite.move(2, 0);
-                if(bullets.get(a).getSpriteX()>850){
-                    bullets.remove(a);
-                }
-            }
-            */
             for (int a = 0; a < bullets.size(); a++) {
                 window.draw(bullets.get(a).sprite);
                 bullets.get(a).sprite.move(15, 0);
@@ -137,12 +97,34 @@ public class Interface{
                 }
 
             }
+            if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
+                window.close();
+            }
+            if(Keyboard.isKeyPressed(Keyboard.Key.W))
+            {
+                p.sprite.move(0, -5);
+            }
+            if(Keyboard.isKeyPressed(Keyboard.Key.S))
+            {
+                p.sprite.move(0, 5);
+                //sprite.setTexture(texture);
+            }
+            if(Keyboard.isKeyPressed(Keyboard.Key.A))
+            {
+                p.sprite.move(-5, 0);
+                // sprite.setTexture(texture);
+            }
+            if(Keyboard.isKeyPressed(Keyboard.Key.D))
+            {
+                p.sprite.move(5, 0);
+
+            }
             endTime = System.nanoTime()/1000000;
             totalTime = endTime - startTime ;
             System.out.println(totalTime);
             window.draw(p.sprite);
             window.draw(r.sprite);
-
+            p.calcMove();
             window.display();
 
         }
