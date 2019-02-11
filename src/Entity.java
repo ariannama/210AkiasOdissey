@@ -10,7 +10,7 @@ public abstract class Entity {
     protected Sprite sprite;
     protected Texture texture;
 
-    protected String id;
+    private String id;
 
     public Entity(Sprite s, Texture t, String id) {
         this.sprite = s;
@@ -31,5 +31,6 @@ public abstract class Entity {
     public float getSpriteY() {
         return sprite.getPosition().y;
     }
+
 
 }

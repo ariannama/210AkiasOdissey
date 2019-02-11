@@ -42,4 +42,8 @@ public class Player extends Character {
     public void setFiring(boolean b){
         firing = b;
     }
+    public void addCoin(){
+        coinCount++;
+    }
+
 }

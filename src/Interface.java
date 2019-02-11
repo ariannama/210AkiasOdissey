@@ -1,8 +1,6 @@
 
 import javafx.event.EventType;
-import org.jsfml.graphics.RenderWindow;
-import org.jsfml.graphics.Sprite;
-import org.jsfml.graphics.Texture;
+import org.jsfml.graphics.*;
 import org.jsfml.system.Vector2f;
 import org.jsfml.window.Keyboard;
 import org.jsfml.window.*;
@@ -29,12 +27,12 @@ public class Interface{
         Texture backTexture = new Texture();
         Texture bullet = new Texture();
         try {
-            imgTexture.loadFromFile(Paths.get("D:\\Character_spriteSheet FRONT.png"));
-            leftTexture.loadFromFile(Paths.get("D:\\Character_spriteSheet LEFT.png"));
-            rightTexture.loadFromFile(Paths.get("D:\\Character_spriteSheet RIGHT.png"));
-            backTexture.loadFromFile(Paths.get("D:\\Character_spriteSheet BACK.png"));
-            back.loadFromFile(Paths.get("D:\\issabackground.png"));
-            bullet.loadFromFile(Paths.get("D:\\projectiles.png"));
+            imgTexture.loadFromFile(Paths.get("E:\\Character_spriteSheet FRONT.png"));
+            leftTexture.loadFromFile(Paths.get("E:\\Character_spriteSheet LEFT.png"));
+            rightTexture.loadFromFile(Paths.get("E:\\Character_spriteSheet RIGHT.png"));
+            backTexture.loadFromFile(Paths.get("H:\\Character_spriteSheet BACK.png"));
+            back.loadFromFile(Paths.get("E:\\issabackground.png"));
+            bullet.loadFromFile(Paths.get("E:\\projectiles.png"));
             System.out.println("--success--");
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -103,24 +101,34 @@ public class Interface{
             if(Keyboard.isKeyPressed(Keyboard.Key.W))
             {
                 p.sprite.move(0, -5);
+                p.sprite.setTexture(backTexture);
             }
             if(Keyboard.isKeyPressed(Keyboard.Key.S))
             {
                 p.sprite.move(0, 5);
-                //sprite.setTexture(texture);
+                p.sprite.setTexture(imgTexture);
             }
             if(Keyboard.isKeyPressed(Keyboard.Key.A))
             {
                 p.sprite.move(-5, 0);
-                // sprite.setTexture(texture);
+                p.sprite.setTexture(leftTexture);
             }
             if(Keyboard.isKeyPressed(Keyboard.Key.D))
             {
                 p.sprite.move(5, 0);
+                p.sprite.setTexture(rightTexture);
+            }
+            for (int j = 0; j < bullets.size() ; j++) {
+                IntRect floatRect= new IntRect(bullets.get(j).sprite.getGlobalBounds());
+                IntRect floatRect2= new IntRect(r.sprite.getGlobalBounds());
+                if(floatRect.intersection(floatRect2) != null) {
+                    bullets.remove(j);
+                    r.sprite.setPosition(4000, 4000);
+                }
 
             }
-            endTime = System.nanoTime()/1000000;
-            totalTime = endTime - startTime ;
+            endTime = System.nanoTime() / 1000000;
+            totalTime = endTime - startTime;
             System.out.println(totalTime);
             window.draw(p.sprite);
             window.draw(r.sprite);
