@@ -32,7 +32,7 @@ public class Menu {
 
         //Setting the icon of the game
         Image img = new Image();
-        Path p1 = Paths.get("H:\\Akia-images\\icon.png");
+        Path p1 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\icon.png");
         try {
             img.loadFromFile(p1);
         } catch (IOException e) {
@@ -46,8 +46,8 @@ public class Menu {
         Vector2f l1 = new Vector2f(728, 84);
         RectangleShape t1 = new RectangleShape(l1);
         t1.setPosition(148, 40);
-        Path p2 = Paths.get("H:\\Akia-images\\BGbackground.jpg");
-        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY (5).png");
+        Path p2 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\BGbackground.jpg");
+        Path p3 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\AKIAS-ODYSSEY (5).png");
         try {
             bg.loadFromFile(p2);
             logo.loadFromFile(p3);
@@ -66,8 +66,8 @@ public class Menu {
         b2.setPosition(362, 350);
         Texture but1 = new Texture();
         Texture but2 = new Texture();
-        Path p4 = Paths.get("H:\\Akia-images\\continue-button.png");
-        Path p5 = Paths.get("H:\\Akia-images\\new-button.png");
+        Path p4 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\continue-button.png");
+        Path p5 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\new-button.png");
         try {
             but1.loadFromFile(p4);
             but2.loadFromFile(p5);
@@ -78,12 +78,16 @@ public class Menu {
         b2.setTexture(but2);
 
         //Making the buttons clickable
-        //if(Mouse.getPosition(w) >=
+        Vector2i mousePos = Mouse.getPosition(w);
+        Vector2f mousePosF = new Vector2f(mousePos);
 
         while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
                 if(event.type == Event.Type.CLOSED){
                     w.close();
+                }
+                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (b1.getGlobalBounds().contains(mousePosF) || b2.getGlobalBounds().contains(mousePosF))){
+                    System.out.println("hey");
                 }
             }
             w.draw(backg);
