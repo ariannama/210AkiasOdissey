@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="jsfml">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/SCC210 Example Code 2015/Test/jsfml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/META/jsfml.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
