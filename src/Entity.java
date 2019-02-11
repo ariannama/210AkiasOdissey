@@ -32,5 +32,5 @@ public abstract class Entity {
         return sprite.getPosition().y;
     }
 
-
 }
+

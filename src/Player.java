@@ -1,4 +1,3 @@
-
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
@@ -45,5 +44,4 @@ public class Player extends Character {
     public void addCoin(){
         coinCount++;
     }
-
 }
