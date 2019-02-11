@@ -6,6 +6,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.function.*;
 
+import org.jsfml.audio.Music;
 import org.jsfml.audio.SoundBuffer;
 import org.jsfml.system.*;
 import org.jsfml.window.*;
@@ -77,10 +78,23 @@ public class Menu {
         b1.setTexture(but1);
         b2.setTexture(but2);
 
-        //Making the buttons clickable
+        //
         Vector2i mousePos = Mouse.getPosition(w);
         Vector2f mousePosF = new Vector2f(mousePos);
 
+        //Adding background music
+        Music bgMusic = new Music();
+        Path p6 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\sounds\\adventurers.wav");
+        try {
+            bgMusic.openFromFile(p6);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        bgMusic.setLoop(true);
+        bgMusic.play();
+
+
+        //Identifies events while the window is open
         while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
                 if(event.type == Event.Type.CLOSED){
@@ -95,6 +109,7 @@ public class Menu {
             w.draw(b1);
             w.draw(b2);
             w.display();
+            //bgMusic.play();
         }
 
 
