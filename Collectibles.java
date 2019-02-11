@@ -1,20 +1,29 @@
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
+/*
+*
+* This is all collectible items such as keys, coins and hearts
+* and disappear when collected
+*
+* @Author Michael Heaver
+ */
+
 public class Collectibles extends Items{
-    private int coinTotal, keyTotal;
-    public Collectibles(double x, double y){
-        super(x,y, 1);
+        /*
+    * Main constructor
+    * Takes the Sprite, Texture and String ID
+    */
+    public Collectibles(Sprite sprite, Texture texture, String id){
+        super(sprite,texture, id);
     }
 
-    //Coins
-    public void collectCoin(){
-        coinTotal++;
-        this.pickupItem();
+    public void collision(){}
+
+    public void despawnCollectible(){
+        this.sprite.setPosition(4000000,4000000);
+        setInactive();
     }
 
-    //Keys
-    public void collectKey(){
-        coinTotal++;
-        this.pickupItem();
-    }
     //Hearts
     public void collectHealth(){
        /*
