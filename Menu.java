@@ -6,6 +6,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.function.*;
 
+import org.jsfml.audio.SoundBuffer;
 import org.jsfml.system.*;
 import org.jsfml.window.*;
 import org.jsfml.window.event.*;
@@ -21,10 +22,15 @@ import org.jsfml.graphics.*;
  */
 public class Menu {
 
+    /**
+     * Constructor for the menu class - does not take any parameters
+     */
     public Menu(){
-        VideoMode vm = new VideoMode(1100, 700);
+        //Setting the size of the window and the title
+        VideoMode vm = new VideoMode(1024, 630);
         RenderWindow w = new RenderWindow(vm, "Akia's Odyssey", WindowStyle.CLOSE);
 
+        //Setting the icon of the game
         Image img = new Image();
         Path p1 = Paths.get("H:\\Akia-images\\icon.png");
         try {
@@ -34,13 +40,14 @@ public class Menu {
         }
         w.setIcon(img);
 
+        //Setting the background and title
         Texture bg = new Texture();
         Texture logo = new Texture();
-        Vector2f l1 = new Vector2f(708, 79);
+        Vector2f l1 = new Vector2f(728, 84);
         RectangleShape t1 = new RectangleShape(l1);
-        t1.setPosition(196, 40);
-        Path p2 = Paths.get("H:\\Akia-images\\bg.jpg");
-        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY (2).png");
+        t1.setPosition(148, 40);
+        Path p2 = Paths.get("H:\\Akia-images\\BGbackground.jpg");
+        Path p3 = Paths.get("h:\\Akia-images\\AKIAS-ODYSSEY (5).png");
         try {
             bg.loadFromFile(p2);
             logo.loadFromFile(p3);
@@ -51,15 +58,16 @@ public class Menu {
         backg.setTexture(bg);
         t1.setTexture(logo);
 
-        Vector2f r1 = new Vector2f(200, 100);
+        //Setting the buttons
+        Vector2f r1 = new Vector2f(300, 125);
         RectangleShape b1 = new RectangleShape(r1);
         RectangleShape b2 = new RectangleShape(r1);
-        b1.setPosition(450, 300);
-        b2.setPosition(450, 399);
+        b1.setPosition(362, 200);
+        b2.setPosition(362, 350);
         Texture but1 = new Texture();
         Texture but2 = new Texture();
-        Path p4 = Paths.get("H:\\Akia-images\\button_start.png");
-        Path p5 = Paths.get("H:\\Akia-images\\button_continue.png");
+        Path p4 = Paths.get("H:\\Akia-images\\continue-button.png");
+        Path p5 = Paths.get("H:\\Akia-images\\new-button.png");
         try {
             but1.loadFromFile(p4);
             but2.loadFromFile(p5);
@@ -68,6 +76,9 @@ public class Menu {
         }
         b1.setTexture(but1);
         b2.setTexture(but2);
+
+        //Making the buttons clickable
+        //if(Mouse.getPosition(w) >=
 
         while(w.isOpen() == true){
             for(Event event :w.pollEvents()){
