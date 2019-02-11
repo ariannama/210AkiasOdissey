@@ -18,12 +18,14 @@ public abstract class Character extends Entity{
 
     public abstract void move();
 
+    public abstract void attack();
+
     public void calcMove(){
         float x = getSpriteX();
         float y = getSpriteY();
 
-        int dx = 2;
-        int dy = 2;
+        int dx = 10;
+        int dy = 10;
 
         x += dx;
         y += dy;
