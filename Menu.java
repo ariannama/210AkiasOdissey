@@ -1,13 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.function.*;
 
 import org.jsfml.audio.Music;
-import org.jsfml.audio.SoundBuffer;
 import org.jsfml.system.*;
 import org.jsfml.window.*;
 import org.jsfml.window.event.*;
