@@ -1,5 +1,4 @@
-import java.util.Random;
-
+//author: dian
 public class room {
     private String[][] roomTile;
 
