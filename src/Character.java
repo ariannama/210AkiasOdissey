@@ -50,33 +50,43 @@ public abstract class Character extends Entity{
 
     }
 
-    public void setDamage(int damage) {
+    public void setDamage(int damage) 
+    {
         this.damage = damage;
     }
 
-    public void setMoveSpeed(int moveSpeed) {
+    public void setMoveSpeed(int moveSpeed) 
+    {
         this.moveSpeed = moveSpeed;
     }
 
-    public void setCurrentHealth(double currentHealth) {
+    public void setCurrentHealth(double currentHealth) 
+    {
         this.currentHealth = currentHealth;
     }
 
-    public void setMaxHealth(int maxHealth) {
+    public void setMaxHealth(int maxHealth) 
+    {
         this.maxHealth = maxHealth;
     }
 
-    public int getDamage() { return damage; }
+    public int getDamage() 
+    { 
+        return damage; 
+    }
 
-    public int getMoveSpeed() {
+    public int getMoveSpeed() 
+    {
         return moveSpeed;
     }
 
-    public double getCurrentHealth() {
+    public double getCurrentHealth() 
+    {
         return currentHealth;
     }
 
-    public int getMaxHealth() {
+    public int getMaxHealth() 
+    {
         return maxHealth;
     }
 }
