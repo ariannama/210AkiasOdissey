@@ -1,3 +1,4 @@
+//author: dian
 public class BossRoom extends room{
     private String[][] roomTile;
     public BossRoom(){
