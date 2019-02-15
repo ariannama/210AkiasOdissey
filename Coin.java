@@ -8,6 +8,7 @@ import org.jsfml.graphics.Texture;
  *
  *  @Author Michael Heaver
  */
+
 public class Coin extends Collectibles {
 
     public void pickUp(){
@@ -16,7 +17,6 @@ public class Coin extends Collectibles {
 
     public Coin(Sprite coin, Texture coinTexture,  float x, float y){
         super(coin, coinTexture,"coin");
-        sprite.setPosition(x,y);
-
+        coin.setPosition(x,y);
     }
 }

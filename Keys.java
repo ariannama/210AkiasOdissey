@@ -1,22 +1,21 @@
-public class Keys extends Collectibles{
-    private String imagePath="whatever the fuck it is";
-    private int id;
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
+/*
+* <h1>Keys</h1>
+*
+*  This is the key class
+*
+*  @Author Michael Heaver
+*/
 
-    public String getImagePath(){
-        return imagePath;
+public class Keys extends Collectibles {
+
+    public void pickUp(){
+        despawnCollectible();
     }
 
-    public int getID(){
-        return id;
-    }
-
-    public void keyIncrease(){
-        inventory.addKey();
-        this.pickupItem();
-    }
-
-    public Keys(int x, int y){
-        super(x,y);
-        id = 1; //whatever the fuck this one is
+    public Keys(Sprite key, Texture keyTexture,  float x, float y){
+        super(key, keyTexture,"key");
+        key.setPosition(x,y);
     }
 }
