@@ -48,7 +48,7 @@ public class Game {
     public void initGame(){
         Texture tt = new Texture();
         try{
-            tt.loadFromFile(Paths.get("E:\\The Folder\\Game\\front.png"));
+            tt.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\BG.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

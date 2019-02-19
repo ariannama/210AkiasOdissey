@@ -20,9 +20,9 @@ public class Menu {
         Texture button1T = new Texture();
         //Texture button2T = new Texture();
         try{
-            backgroundT.loadFromFile(Paths.get("E:\\The Folder\\Game\\menu.png"));
-            titleT.loadFromFile(Paths.get("E:\\The Folder\\Game\\title.png"));
-            button1T.loadFromFile(Paths.get("E:\\The Folder\\Game\\Tee.png"));
+            backgroundT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\menu.png"));
+            titleT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\title.png"));
+            button1T.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\Tee.png"));
             //button2T.loadFromFile(Paths.get("E:\\The Folder\\Game\\NButton.png"));
         } catch (IOException e) {
             e.printStackTrace();
