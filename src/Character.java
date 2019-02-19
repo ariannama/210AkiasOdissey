@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d548679fab2c8fef192409511a92ad8b57f4188
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 
@@ -8,8 +12,13 @@ public abstract class Character extends Entity{
     private double currentHealth;
     private int maxHealth;
 
+<<<<<<< HEAD
     public Character(Sprite s, String id,  int dmg, int mS, double cH, int maxH){
         super(s, id);
+=======
+    public Character(Sprite s, Texture t, String id,  int dmg, int mS, double cH, int maxH){
+        super(s, t, id);
+>>>>>>> 2d548679fab2c8fef192409511a92ad8b57f4188
         this.damage = dmg;
         this.moveSpeed = mS;
         this.currentHealth = cH;
@@ -18,12 +27,22 @@ public abstract class Character extends Entity{
 
     public abstract void move();
 
+<<<<<<< HEAD
+=======
+    public abstract void attack();
+
+>>>>>>> 2d548679fab2c8fef192409511a92ad8b57f4188
     public void calcMove(){
         float x = getSpriteX();
         float y = getSpriteY();
 
+<<<<<<< HEAD
         int dx = 2;
         int dy = 2;
+=======
+        int dx = 5;
+        int dy = 5;
+>>>>>>> 2d548679fab2c8fef192409511a92ad8b57f4188
 
         x += dx;
         y += dy;
@@ -76,4 +95,8 @@ public abstract class Character extends Entity{
     public int getMaxHealth() {
         return maxHealth;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2d548679fab2c8fef192409511a92ad8b57f4188
