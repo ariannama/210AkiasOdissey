@@ -1,10 +1,15 @@
 import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
 import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.WindowStyle;
 import org.jsfml.window.event.Event;
+
+import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Game {
     public RenderWindow window;
@@ -29,12 +34,30 @@ public class Game {
                 System.out.println(mousePos2f);
                 //System.out.println(Mouse.getPosition());
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true))
-                    System.out.println("Fuck yeah");
+                    initGame();
+                    //System.out.println("Fuck yeah");
                 window.display();
             }
             for(Entity temp: menu.menuEntity){
                 window.draw(temp.getSprite());
             }
+            window.display();
+        }
+    }
+
+    public void initGame(){
+        Texture tt = new Texture();
+        try{
+            tt.loadFromFile(Paths.get("E:\\The Folder\\Game\\front.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Button b = new Button(tt, window);
+        while (window.isOpen()){
+            for(Event e : window.pollEvents()){
+
+            }
+            window.draw(b.getSprite());
             window.display();
         }
     }
