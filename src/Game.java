@@ -26,10 +26,11 @@ public class Game {
                 Vector2i mousePos2i = Mouse.getPosition(window);
                 Vector2f mousePos2f = new Vector2f(mousePos2i);
                 //System.out.println(menu.button1.s.getGlobalBounds());
-                //System.out.println(mousePos2f);
+                System.out.println(mousePos2f);
                 //System.out.println(Mouse.getPosition());
-                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.button1.s.getLocalBounds().contains(mousePos2f)))
+                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true))
                     System.out.println("Fuck yeah");
+                window.display();
             }
             for(Entity temp: menu.menuEntity){
                 window.draw(temp.getSprite());
