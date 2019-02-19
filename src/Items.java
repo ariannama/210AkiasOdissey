@@ -1,6 +1,5 @@
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
-
 /*
 *   <h1>Items</h1>
 *
