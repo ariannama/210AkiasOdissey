@@ -43,5 +43,7 @@ public class Player extends Character {
     }
     public void addCoin(){
         coinCount++;
+        System.out.println(coinCount);
     }
+    public void addKey() { keyCount++ ; }
 }

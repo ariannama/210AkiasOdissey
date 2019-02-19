@@ -7,4 +7,9 @@ public class Ranged extends Enemy
     {
         super(s, t, id, dmg, mS, cH, maxH);
     }
+    public void collision(){}
+
+    public void setCurrentHealth(){
+        this.currentHealth -=0.5;
+    }
 }

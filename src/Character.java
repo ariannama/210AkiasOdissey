@@ -6,7 +6,7 @@ public abstract class Character extends Entity{
 
     private int damage;
     private int moveSpeed;
-    private double currentHealth;
+    protected double currentHealth;
     private int maxHealth;
 
     public Character(Sprite s, Texture t, String id,  int dmg, int mS, double cH, int maxH){

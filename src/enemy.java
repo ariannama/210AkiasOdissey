@@ -1,3 +1,6 @@
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
+
 public abstract class Enemy extends Character
 {
     public Enemy(Sprite s, Texture t, String id, int dmg, int mS, double cH, int maxH)
