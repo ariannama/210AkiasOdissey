@@ -1,3 +1,4 @@
+//author: dian
 import java.util.Random;
 
 public class StandardRoom extends room{

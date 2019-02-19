@@ -1,3 +1,4 @@
+//author: dian
 public class ItemRoom extends room{
     private String[][] roomTile;
     public ItemRoom(){

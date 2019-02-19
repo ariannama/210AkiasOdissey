@@ -1,3 +1,4 @@
+//author: dian
 public class RoomTest {
     public static void main(String[] args) {
         for(int floor = 1; floor < 5; floor++){

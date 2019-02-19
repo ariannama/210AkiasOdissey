@@ -4,64 +4,32 @@
  * The door class describes the behaviour and attributes of the doors through which
  * the character accesses other rooms.
  *
- * @author: Arianna Marrocu
+ * @author: Arianna Marrocu, Tom Barlow
  */
 
 public class Door {
 
     /**
-     * doorState is an array of booleans which describes the current state of the door.
-     * Its order is: open, closed, locked.
+     * access is a boolean which describes whether the player can go through the door or not
      */
-    private boolean[] doorState = new boolean[3];
-    /** doorPosition is an array of booleans which describes the current position of the door.
-     * Its order is: north, west, south, east.
+    private boolean access;
+    /**
+     * Class reference to room so it is able to read the number of enemies in the room.
+      */
+    room r;
+
+    /**
+     * Creates a door with an access based on the number of enemies in the room
+     * If there are no enemies, the doors are open. If there are, the doors are closed.
      */
-    private boolean[] doorPosition = new boolean[4];
-    //array of imgs for open doors
-    //array of imgs for closed doors
-    //array of imgs for locked doors
-
-    public Door(String state, String position) {
-        switch(state) {
-            case "open":
-                doorState[0] = true;
-                doorState[1] = false;
-                doorState[2] = false;
-                break;
-            case "closed":
-                doorState[0] = false;
-                doorState[1] = true;
-                doorState[2] = false;
-                break;
-            case "locked":
-                doorState[0] = false;
-                doorState[1] = false;
-                doorState[2] = true;
-                break;
-        }
-        //switch for position
-
+    public Door() {
+       while (true){
+          if(r.getEnemyCount() == 0) {
+               access = true;
+           }
+          else {
+               access = false;
+           }
+       }
     }
-
-    public void setDoorState(String state) {
-        switch(state) {
-            case "open":
-                doorState[0] = true;
-                doorState[1] = false;
-                doorState[2] = false;
-                break;
-            case "closed":
-                doorState[0] = false;
-                doorState[1] = true;
-                doorState[2] = false;
-                break;
-            case "locked":
-                doorState[0] = false;
-                doorState[1] = false;
-                doorState[2] = true;
-                break;
-        }
-    }
-
 }
