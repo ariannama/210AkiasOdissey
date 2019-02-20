@@ -54,5 +54,7 @@ public class Menu {
 
     }
 
-
+    public void turnOffMusic(){
+        bgMusic.stop();
+    }
 }

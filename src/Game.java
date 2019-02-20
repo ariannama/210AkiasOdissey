@@ -42,7 +42,7 @@ public class Game {
                 //System.out.println(Mouse.getPosition());
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true)){
                     menuOn = false;
-
+                    menu.turnOffMusic();
                     initGame();
 
 
