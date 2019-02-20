@@ -37,15 +37,13 @@ public class Game {
             for(Event e : window.pollEvents()){
                 Vector2i mousePos2i = Mouse.getPosition(window);
                 Vector2f mousePos2f = new Vector2f(mousePos2i);
-                //System.out.println(menu.button1.s.getGlobalBounds());
-                //System.out.println(mousePos2f);
-                //System.out.println(Mouse.getPosition());
+                if(e.type == Event.Type.CLOSED){
+                    window.close();
+                }
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true)){
                     menuOn = false;
                     menu.turnOffMusic();
                     initGame();
-
-
                 }
 
                     //System.out.println("Fuck yeah");
