@@ -20,10 +20,10 @@ public class Menu {
         Texture button1T = new Texture();
         Texture button2T = new Texture();
         try {
-            backgroundT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\BGbackground.jpg"));
-            titleT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\AKIAS-ODYSSEY.png"));
-            button1T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\new-button.png"));
-            button2T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\continue-button.png"));
+            backgroundT.loadFromFile(Paths.get("images\\BGbackground.jpg"));
+            titleT.loadFromFile(Paths.get("images\\AKIAS-ODYSSEY.png"));
+            button1T.loadFromFile(Paths.get("images\\new-button.png"));
+            button2T.loadFromFile(Paths.get("images\\continue-button.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

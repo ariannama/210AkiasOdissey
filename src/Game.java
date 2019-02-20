@@ -22,6 +22,7 @@ public class Game {
 
     int directionX = 0;
     int directionY = 0;
+    boolean menuActive = true;
 
     public Game(){
         VideoMode vm = new VideoMode(1024, 630);
@@ -32,8 +33,9 @@ public class Game {
 
     public void runMenu(RenderWindow window) {
         boolean menuOpen = true;
+
         Music bgMusic = new Music();
-        Path p6 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\sounds\\adventurers.wav");
+        Path p6 = Paths.get("sounds\\adventurers.wav");
         try {
             bgMusic.openFromFile(p6);
         } catch (IOException e) {
@@ -41,53 +43,54 @@ public class Game {
         }
         bgMusic.setLoop(true);
         bgMusic.play();
-
         while (window.isOpen() == true) {
             Vector2i mousePos = Mouse.getPosition(window);
             Vector2f mousePosF = new Vector2f(mousePos);
             for (Event event : window.pollEvents()) {
-                if (menuOpen == true) {
-                    for (Sprite temp : menu.menuSprites) {
-                        window.draw(temp);
+                if(menuOpen == true) {
+                    if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.getSpriteGlobalBoundsNew().contains(mousePosF) || menu.getSpriteGlobalBoundContinue().contains(mousePosF))) {
+                        System.out.println("hey");
+                        window.clear();
+                        initGame(window);
+                        menuOpen = false;
                     }
                 }
-                window.display();
+
                 if (event.type == Event.Type.CLOSED) {
                         window.close();
                 }
-                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.getSpriteGlobalBoundsNew().contains(mousePosF) || menu.getSpriteGlobalBoundContinue().contains(mousePosF))) {
-                    menuOpen = false;
-                }
-                if(menuOpen == false){
-                    window.clear();
-                    //initGame();
+            }
+            initGame(window);
+            if (menuOpen == true) {
+                for (Sprite temp : menu.menuSprites) {
+                    window.draw(temp);
                 }
             }
             window.display();
         }
     }
 
-    public void initGame(){
-        //window.clear();
-        boolean initGame = true;
+    public void initGame(RenderWindow window){
         Texture playerT = new Texture();
         Texture bgT = new Texture();
         try{
-            bgT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\BGbackground.jpg"));
-            //playerT.loadFromFile(Paths.get("..\\images\\firepit.png"));
+            bgT.loadFromFile(Paths.get("images\\bg.jpg"));
+            playerT.loadFromFile(Paths.get("images\\player.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         player = new Player(playerT,5, 1, 5, 5, 0, 0 );
         player.s.setPosition(100,100);
-        while (initGame == true) {
-            window.draw(player.getSprite());
-        }
-        runGame();
+        Sprite bg = new Sprite(bgT);
+        window.draw(bg);
+        window.draw(player.getSprite());
+        window.display();
+
+        //runGame();
     }
 
-    public void runGame(){
+    public void runGame(RenderWindow window){
         Texture tt = new Texture();
         Button b = new Button(tt);
         while (window.isOpen()){
