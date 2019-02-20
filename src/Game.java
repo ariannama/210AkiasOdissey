@@ -71,6 +71,7 @@ public class Game {
         }
         background = new Background(bgT, window);
         player = new Player(playerT, window, 5, 1, 5, 5, 0, 0 );
+        player.s.setPosition(100,100);
         runGame();
     }
 
@@ -81,29 +82,7 @@ public class Game {
         while (window.isOpen()){
             player.calcMove();
             for(Event e : window.pollEvents()){
-                if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
-                    window.close();
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.W))
-                {
-                    player.s.move(0, -2);
-                    //player.s.setTexture();
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.S))
-                {
-                    player.s.move(0, 2);
-                    //player.s.setTexture(imgTexture);
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.A))
-                {
-                    player.s.move(-2, 0);
-                   /// player.s.setTexture(leftTexture);
-                }
-                if(Keyboard.isKeyPressed(Keyboard.Key.D))
-                {
-                    player.s.move(2, 0);
-                   // player.s.setTexture(rightTexture);
-                }
+                player.move();
             }
             window.draw(background.getSprite());
             window.draw(player.getSprite());

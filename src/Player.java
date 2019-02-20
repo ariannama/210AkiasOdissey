@@ -29,7 +29,29 @@ public class Player extends Character {
     }
 
     public void move(){
-
+        if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
+            window.close();
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.W))
+        {
+            s.move(0, -2);
+            //player.s.setTexture();
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.S))
+        {
+            s.move(0, 2);
+            //player.s.setTexture(imgTexture);
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.A))
+        {
+            s.move(-2, 0);
+            /// player.s.setTexture(leftTexture);
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.D))
+        {
+            s.move(2, 0);
+            // player.s.setTexture(rightTexture);
+        }
     }
     public void collision(){
 
