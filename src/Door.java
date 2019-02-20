@@ -17,12 +17,14 @@ public class Door {
      * Class reference to room so it is able to read the number of enemies in the room.
       */
     room r;
+    int roomNumber;
 
     /**
      * Creates a door with an access based on the number of enemies in the room
      * If there are no enemies, the doors are open. If there are, the doors are closed.
      */
-    public Door() {
+    public Door(int roomNumber) {
+        this.roomNumber = roomNumber;
        while (true){
           if(r.getEnemyCount() == 0) {
                access = true;
@@ -31,5 +33,9 @@ public class Door {
                access = false;
            }
        }
+    }
+
+    public int getRoomNumber(){
+        return roomNumber;
     }
 }
