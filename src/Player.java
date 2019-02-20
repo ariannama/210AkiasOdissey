@@ -21,8 +21,8 @@ public class Player extends Character {
     //private double percentageLuck;
 
     //Constructor with preset stats
-    public Player(Texture t, RenderWindow window,  int dmg, int mS, double cH, int maxH, int coinCount, int keyCount) {
-        super(t, window, dmg, mS, cH, maxH);
+    public Player(Texture t, int dmg, int mS, double cH, int maxH, int coinCount, int keyCount) {
+        super(t, dmg, mS, cH, maxH);
         this.coinCount = coinCount;
         this.keyCount = keyCount;
         this.w = w;

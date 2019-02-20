@@ -10,8 +10,8 @@ public abstract class Character extends Entity{
     protected double currentHealth;
     private int maxHealth;
 
-    public Character(Texture t, RenderWindow window, int dmg, int mS, double cH, int maxH){
-        super(t, window);
+    public Character(Texture t, int dmg, int mS, double cH, int maxH){
+        super(t);
         this.damage = dmg;
         this.moveSpeed = mS;
         this.currentHealth = cH;

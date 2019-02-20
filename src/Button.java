@@ -1,9 +1,9 @@
-import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Texture;
 
-public class Button extends Entity{
+public class Button extends Entity {
 
-    public Button(Texture t, RenderWindow window){
-        super(t, window);
+    public Button(Texture t){
+        super(t);
     }
+    public void collision(){}
 }

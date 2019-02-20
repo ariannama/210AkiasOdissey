@@ -1,8 +1,7 @@
 import org.jsfml.audio.Music;
-import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.FloatRect;
+import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
-import org.jsfml.window.Mouse;
-import org.jsfml.window.event.Event;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -10,51 +9,44 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Menu {
-    ArrayList<Entity> menuEntity = new ArrayList<Entity>();
-    public Background background;
-    public Title title;
-    public Button button1;
-    public Button button2;
-    public Music bgMusic;
+    ArrayList<Sprite> menuSprites = new ArrayList<>();
+    private Music bgMusic;
+    private Button newButton;
+    private Button continueButton;
 
-    public Menu(RenderWindow window){
+    public Menu() {
         Texture backgroundT = new Texture();
         Texture titleT = new Texture();
         Texture button1T = new Texture();
-        //Texture button2T = new Texture();
-        try{
-            backgroundT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\menu.png"));
-            titleT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\title.png"));
-            button1T.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\Tee.png"));
-            //button2T.loadFromFile(Paths.get("E:\\The Folder\\Game\\NButton.png"));
+        Texture button2T = new Texture();
+        try {
+            backgroundT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\bg.jpg"));
+            titleT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\AKIAS-ODYSSEY.png"));
+            button1T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\new-button.png"));
+            button2T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\continue-button.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        background = new Background(backgroundT, window);
-        title = new Title(titleT, window);
-        button1 = new Button(button1T, window);
-        //button2 = new Button(button2T, window);
-        title.s.setPosition(148, 40);
-        button1.s.setPosition(400, 400);
-        button1.s.setScale(3,3);
-        //button2.s.setPosition(363, 350);
-        menuEntity.add(background);
-        menuEntity.add(title);
-        menuEntity.add(button1);
-       //menuEntity.add(button2);
-        bgMusic = new Music();
-        Path p6 = Paths.get("E:\\The Folder\\Akias Odyssey\\Pics\\adventurers.wav");
-        try {
-            bgMusic.openFromFile(p6);
-        } catch (IOException e){
-            e.printStackTrace();
+        Sprite title = new Sprite(titleT);
+        Sprite background = new Sprite(backgroundT);
+        newButton = new Button(button1T);
+        continueButton = new Button(button2T);
+        Sprite newB = newButton.getSprite();
+        Sprite continueB = continueButton.getSprite();
+        title.setPosition(148, 40);
+        newB.setPosition(400, 400);
+        continueB.setPosition(363, 350);
+        menuSprites.add(background);
+        menuSprites.add(title);
+        menuSprites.add(newB);
+        menuSprites.add(continueB);
+
+    }
+        public FloatRect getSpriteGlobalBoundsNew(){
+                return newButton.getSpriteGlobalBounds();
         }
-        bgMusic.setLoop(true);
-        bgMusic.play();
 
-    }
-
-    public void turnOffMusic(){
-        bgMusic.stop();
-    }
+        public FloatRect getSpriteGlobalBoundContinue(){
+            return continueButton.getSpriteGlobalBounds();
+        }
 }
