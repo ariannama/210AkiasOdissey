@@ -24,4 +24,12 @@ public abstract class Entity {
     public void draw(){
         window.draw(s);
     }
+
+    public float getSpriteX() {
+        return s.getPosition().x;
+
+    }
+    public float getSpriteY() {
+        return s.getPosition().y;
+    }
 }

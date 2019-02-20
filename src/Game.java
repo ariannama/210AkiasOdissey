@@ -3,6 +3,7 @@ import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
+import org.jsfml.window.Keyboard;
 import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.WindowStyle;
@@ -14,6 +15,11 @@ import java.nio.file.Paths;
 public class Game {
     public RenderWindow window;
     public Menu menu;
+    public Player player;
+    public Background background;
+
+    int directionX = 0;
+    int directionY = 0;
 
     public Game(){
         initWindow("Akia's Oddysey", 1024, 768);
@@ -26,15 +32,19 @@ public class Game {
     }
 
     public void runMenu(){
-        while (window.isOpen()){
+        Boolean menuOn = true;
+        while (menuOn){
             for(Event e : window.pollEvents()){
                 Vector2i mousePos2i = Mouse.getPosition(window);
                 Vector2f mousePos2f = new Vector2f(mousePos2i);
                 //System.out.println(menu.button1.s.getGlobalBounds());
-                System.out.println(mousePos2f);
+                //System.out.println(mousePos2f);
                 //System.out.println(Mouse.getPosition());
-                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true))
+                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true)){
                     initGame();
+                    menuOn = false;
+                }
+
                     //System.out.println("Fuck yeah");
                 window.display();
             }
@@ -46,17 +56,33 @@ public class Game {
     }
 
     public void initGame(){
-        Texture tt = new Texture();
+        window.clear();
+        Texture playerT = new Texture();
+        Texture bgT = new Texture();
+
         try{
-            tt.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\BG.png"));
+            bgT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\BG.png"));
+            playerT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\front.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+        background = new Background(bgT, window);
+        player = new Player(playerT, window, 5, 1, 5, 5, 0, 0 );
+        runGame();
+    }
+
+    public void runGame(){
+        Texture tt = new Texture();
         Button b = new Button(tt, window);
         while (window.isOpen()){
+            //player.calcMove();
             for(Event e : window.pollEvents()){
 
+
             }
+            window.draw(background.getSprite());
+            window.draw(player.getSprite());
             window.draw(b.getSprite());
             window.display();
         }
