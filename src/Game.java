@@ -51,11 +51,11 @@ public class Game {
                         window.draw(temp);
                     }
                 }
+                window.display();
                 if (event.type == Event.Type.CLOSED) {
                         window.close();
                 }
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.getSpriteGlobalBoundsNew().contains(mousePosF) || menu.getSpriteGlobalBoundContinue().contains(mousePosF))) {
-                    printing();
                     menuOpen = false;
                 }
                 if(menuOpen == false){
@@ -65,10 +65,6 @@ public class Game {
             }
             window.display();
         }
-    }
-
-    public void printing(){
-        System.out.println("hey");
     }
 
     public void initGame(){
