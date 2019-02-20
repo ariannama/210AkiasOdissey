@@ -30,39 +30,50 @@ public class Game {
         runMenu(window);
     }
 
-    public void runMenu(RenderWindow window){
-        Vector2i mousePos = Mouse.getPosition(window);
-        Vector2f mousePosF = new Vector2f(mousePos);
-
+    public void runMenu(RenderWindow window) {
+        boolean menuOpen = true;
         Music bgMusic = new Music();
         Path p6 = Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\sounds\\adventurers.wav");
         try {
             bgMusic.openFromFile(p6);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         bgMusic.setLoop(true);
         bgMusic.play();
 
-        while (window.isOpen() == true){
-            for(Event event : window.pollEvents()){
-                if(event.type == Event.Type.CLOSED){
-                    window.close();
+        while (window.isOpen() == true) {
+            Vector2i mousePos = Mouse.getPosition(window);
+            Vector2f mousePosF = new Vector2f(mousePos);
+            for (Event event : window.pollEvents()) {
+                if (menuOpen == true) {
+                    for (Sprite temp : menu.menuSprites) {
+                        window.draw(temp);
+                    }
                 }
-                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.getSpriteGlobalBoundsNew().contains(mousePosF) || menu.getSpriteGlobalBoundContinue().contains(mousePosF))){
-                    System.out.println("hey");
+                if (event.type == Event.Type.CLOSED) {
+                        window.close();
+                }
+                if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true) && (menu.getSpriteGlobalBoundsNew().contains(mousePosF) || menu.getSpriteGlobalBoundContinue().contains(mousePosF))) {
+                    printing();
+                    menuOpen = false;
+                }
+                if(menuOpen == false){
+                    window.clear();
+                    //initGame();
                 }
             }
-            for(Sprite temp: menu.menuSprites){
-                window.draw(temp);
-            }
-
-
             window.display();
         }
     }
 
+    public void printing(){
+        System.out.println("hey");
+    }
+
     public void initGame(){
+        //window.clear();
+        boolean initGame = true;
         Texture playerT = new Texture();
         Texture bgT = new Texture();
         try{
@@ -74,7 +85,9 @@ public class Game {
         }
         player = new Player(playerT,5, 1, 5, 5, 0, 0 );
         player.s.setPosition(100,100);
-        window.draw(player.getSprite());
+        while (initGame == true) {
+            window.draw(player.getSprite());
+        }
         runGame();
     }
 
