@@ -43,6 +43,7 @@ public class Game {
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true)){
                     initGame();
                     menuOn = false;
+
                 }
 
                     //System.out.println("Fuck yeah");
@@ -52,6 +53,7 @@ public class Game {
                 window.draw(temp.getSprite());
             }
             window.display();
+            window.clear();
         }
     }
 
@@ -73,41 +75,41 @@ public class Game {
     }
 
     public void runGame(){
+        window.clear();
         Texture tt = new Texture();
         Button b = new Button(tt, window);
         while (window.isOpen()){
-            //player.calcMove();
+            player.calcMove();
             for(Event e : window.pollEvents()){
                 if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
                     window.close();
                 }
                 if(Keyboard.isKeyPressed(Keyboard.Key.W))
                 {
-                    System.out.println("YOooooooooooooooo");
-                    player.s.move(0, -5);
+                    player.s.move(0, -2);
                     //player.s.setTexture();
                 }
                 if(Keyboard.isKeyPressed(Keyboard.Key.S))
                 {
-                    player.s.move(0, 5);
+                    player.s.move(0, 2);
                     //player.s.setTexture(imgTexture);
                 }
                 if(Keyboard.isKeyPressed(Keyboard.Key.A))
                 {
-                    player.s.move(-5, 0);
+                    player.s.move(-2, 0);
                    /// player.s.setTexture(leftTexture);
                 }
                 if(Keyboard.isKeyPressed(Keyboard.Key.D))
                 {
-                    player.s.move(5, 0);
+                    player.s.move(2, 0);
                    // player.s.setTexture(rightTexture);
                 }
-
             }
             window.draw(background.getSprite());
             window.draw(player.getSprite());
             window.draw(b.getSprite());
             window.display();
+            window.clear();
         }
     }
 }
