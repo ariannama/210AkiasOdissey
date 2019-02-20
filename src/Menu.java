@@ -20,7 +20,7 @@ public class Menu {
         Texture button1T = new Texture();
         Texture button2T = new Texture();
         try {
-            backgroundT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\bg.jpg"));
+            backgroundT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\BGbackground.jpg"));
             titleT.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\AKIAS-ODYSSEY.png"));
             button1T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\new-button.png"));
             button2T.loadFromFile(Paths.get("H:\\210AkiasOdissey\\210AkiasOdissey\\images\\continue-button.png"));
@@ -34,8 +34,8 @@ public class Menu {
         Sprite newB = newButton.getSprite();
         Sprite continueB = continueButton.getSprite();
         title.setPosition(148, 40);
-        newB.setPosition(400, 400);
-        continueB.setPosition(363, 350);
+        newB.setPosition(362, 200);
+        continueB.setPosition(362, 350);
         menuSprites.add(background);
         menuSprites.add(title);
         menuSprites.add(newB);
