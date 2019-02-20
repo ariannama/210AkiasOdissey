@@ -1,9 +1,11 @@
+import org.jsfml.audio.Music;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Texture;
 import org.jsfml.window.Mouse;
 import org.jsfml.window.event.Event;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ public class Menu {
     public Title title;
     public Button button1;
     public Button button2;
+    public Music bgMusic;
 
     public Menu(RenderWindow window){
         Texture backgroundT = new Texture();
@@ -39,6 +42,17 @@ public class Menu {
         menuEntity.add(title);
         menuEntity.add(button1);
        //menuEntity.add(button2);
+        bgMusic = new Music();
+        Path p6 = Paths.get("E:\\The Folder\\Akias Odyssey\\Pics\\adventurers.wav");
+        try {
+            bgMusic.openFromFile(p6);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        bgMusic.setLoop(true);
+        bgMusic.play();
 
     }
+
+
 }

@@ -41,8 +41,10 @@ public class Game {
                 //System.out.println(mousePos2f);
                 //System.out.println(Mouse.getPosition());
                 if((Mouse.isButtonPressed(Mouse.Button.LEFT) == true)){
-                    initGame();
                     menuOn = false;
+
+                    initGame();
+
 
                 }
 
@@ -61,7 +63,6 @@ public class Game {
         window.clear();
         Texture playerT = new Texture();
         Texture bgT = new Texture();
-
         try{
             bgT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\BG.png"));
             playerT.loadFromFile(Paths.get("E:\\The Folder\\Game\\210AkiasOdissey\\Pics\\front.png"));
