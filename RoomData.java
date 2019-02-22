@@ -1,5 +1,3 @@
-package pkg210project;
-
 public class RoomData {
     private int floorNum, roomNum, roomNumUp, roomNumRight, roomNumDown, roomNumLeft, x, y;
     private String roomType;
