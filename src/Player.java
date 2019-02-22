@@ -2,6 +2,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
+import org.jsfml.system.Vector2f;
 import org.jsfml.window.Keyboard;
 import org.jsfml.window.event.Event;
 
@@ -20,20 +21,47 @@ public class Player extends Character {
     //private double percentageLuck;
 
     //Constructor with preset stats
-    public Player(Sprite s, Texture t, String id,  int dmg, int mS, double cH, int maxH, int coinCount, int keyCount, RenderWindow w) {
-        super(s, t, id, dmg, mS, cH, maxH);
+    public Player(Texture t, int dmg, int mS, double cH, int maxH, int coinCount, int keyCount) {
+        super(t, dmg, mS, cH, maxH);
         this.coinCount = coinCount;
         this.keyCount = keyCount;
         this.w = w;
     }
 
     public void move(){
+        if (Keyboard.isKeyPressed(Keyboard.Key.ESCAPE)) {
+            window.close();
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.W))
+        {
+            s.move(0, -2);
+            //player.s.setTexture();
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.S))
+        {
+            s.move(0, 2);
+            //player.s.setTexture(imgTexture);
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.A))
+        {
+            s.move(-2, 0);
+            /// player.s.setTexture(leftTexture);
+        }
+        if(Keyboard.isKeyPressed(Keyboard.Key.D))
+        {
+            s.move(2, 0);
+            // player.s.setTexture(rightTexture);
+        }
     }
     public void collision(){
 
     }
     public void attack() {
 
+    }
+
+    public Vector2f getX(){
+        return s.getPosition();
     }
     public boolean isFiring(){
         return firing;

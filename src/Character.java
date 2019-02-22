@@ -1,4 +1,5 @@
 
+import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 
@@ -9,8 +10,8 @@ public abstract class Character extends Entity{
     protected double currentHealth;
     private int maxHealth;
 
-    public Character(Sprite s, Texture t, String id,  int dmg, int mS, double cH, int maxH){
-        super(s, t, id);
+    public Character(Texture t, int dmg, int mS, double cH, int maxH){
+        super(t);
         this.damage = dmg;
         this.moveSpeed = mS;
         this.currentHealth = cH;
@@ -33,59 +34,59 @@ public abstract class Character extends Entity{
 
         //LEFT
         if (x <= 35)
-        { dx *= 2; sprite.setPosition(x , getSpriteY()); }
+        { dx *= 2; s.setPosition(x , getSpriteY()); }
 
         //RIGHT
         if (x >= 950)
-        { dx *= -2;  sprite.setPosition(x + dx , getSpriteY()); }
+        { dx *= -2;  s.setPosition(x + dx , getSpriteY()); }
 
         //TOP
         if (y <= 0)
-        {dy *= 2;  sprite.setPosition(getSpriteX() ,y);}
+        {dy *= 2;  s.setPosition(getSpriteX() ,y);}
 
         //BOTTOM
         if (y >= 630)
-        { dy *= -2;  sprite.setPosition(getSpriteX() ,y + dy); }
+        { dy *= -2;  s.setPosition(getSpriteX() ,y + dy); }
 
 
     }
 
-    public void setDamage(int damage) 
+    public void setDamage(int damage)
     {
         this.damage = damage;
     }
 
-    public void setMoveSpeed(int moveSpeed) 
+    public void setMoveSpeed(int moveSpeed)
     {
         this.moveSpeed = moveSpeed;
     }
 
-    public void setCurrentHealth(double currentHealth) 
+    public void setCurrentHealth(double currentHealth)
     {
         this.currentHealth = currentHealth;
     }
 
-    public void setMaxHealth(int maxHealth) 
+    public void setMaxHealth(int maxHealth)
     {
         this.maxHealth = maxHealth;
     }
 
-    public int getDamage() 
-    { 
-        return damage; 
+    public int getDamage()
+    {
+        return damage;
     }
 
-    public int getMoveSpeed() 
+    public int getMoveSpeed()
     {
         return moveSpeed;
     }
 
-    public double getCurrentHealth() 
+    public double getCurrentHealth()
     {
         return currentHealth;
     }
 
-    public int getMaxHealth() 
+    public int getMaxHealth()
     {
         return maxHealth;
     }

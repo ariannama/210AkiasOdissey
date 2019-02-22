@@ -1,36 +1,38 @@
+import org.jsfml.graphics.FloatRect;
+import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 import org.jsfml.system.Vector2f;
 
-/**
- * @author: Moses, Tom, Arianna, Olek
- */
 public abstract class Entity {
+    public Texture t;
+    public Sprite s;
+    public RenderWindow window;
 
-    protected Sprite sprite;
-    protected Texture texture;
+    public Entity(Texture t){
+        this.t = t;
+        s = new Sprite(t);
+    }
 
-    private String id;
+    public Sprite getSprite(){
+        return s;
+    }
 
-    public Entity(Sprite s, Texture t, String id) {
-        this.sprite = s;
-        this.texture = t;
-        this.id = id;
+    public Texture getTexture(){
+        return t;
     }
 
     public abstract void collision();
 
-    public String getId() {
-        return id;
-    }
-
     public float getSpriteX() {
-        return sprite.getPosition().x;
+        return s.getPosition().x;
 
     }
     public float getSpriteY() {
-        return sprite.getPosition().y;
+        return s.getPosition().y;
     }
 
+    public FloatRect getSpriteGlobalBounds(){
+        return s.getGlobalBounds();
+    }
 }
-
