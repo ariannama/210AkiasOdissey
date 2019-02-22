@@ -1,20 +1,19 @@
 package pkg210project;
-import java.util.*;
+import java.util.Random;
 
-public class StandardRoom extends room{
+public class preSecretRoom extends room{
 
-    //private AStar AI = new AStar();
     private int enemyCount, rockCount, chestCount, coinCount, fireCount, keyCount, halfHeart, fullHeart, heartCount;
     private int maxEnemy = 2, maxChest = 1, maxCoin = 4, maxKey = 1, floor;
     private Random rand;
     private int holder, heart;
     private String[][] roomTile;
-    private String Path = "p ", Chest = "ch", Enemy = "e ", Coin = "c ", Fire = "f ", Key = "k ", HalfHeart = "hh", FullHeart = "fh", Rock = "r ";
-    public StandardRoom(int floor){
+    private String Path = "  ", Chest = "ch", Enemy = "e ", Coin = "c ", Fire = "f ", Key = "k ", HalfHeart = "hh", FullHeart = "fh", Rock = "r ";
+    public preSecretRoom(int floor){
         super(floor);
         roomTile = super.getRoomTile();
-        maxEnemy += floor;
         spawn();
+        spawnTorch();
         super.setWall();
     }
 
@@ -38,12 +37,10 @@ public class StandardRoom extends room{
                         else if(holder >= 750 && holder < 850){
                             roomTile[x][y] = Rock;
                             rockCount++;
-                            //AI.setBlocked(x, y);
                         }
                         else if(holder >= 850 && holder < 950){
                             roomTile[x][y] = Fire;
                             fireCount++;
-                            //AI.setBlocked(x, y);
                         }
                         else if(holder >= 950 && holder <= 990){
                             if(coinCount < maxCoin){
@@ -101,6 +98,11 @@ public class StandardRoom extends room{
     
     public void reduceEnemyCount(){
         enemyCount -= 1;
+    }
+    
+    public void spawnTorch(){
+        super.rtiw[4][0] = "t";
+        super.rtiw[8][0] = "t";
     }
 }
 

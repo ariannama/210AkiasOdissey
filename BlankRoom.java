@@ -1,13 +1,10 @@
 package pkg210project;
 
-public class ShopRoom extends room{
+public class BlankRoom extends room{
     private String[][] roomTile;
-    public ShopRoom(int floor){
+    public BlankRoom(int floor){
         super(floor);
         roomTile = super.getRoomTile();
         super.setWall();
-    }
-    public void spawnItem(){
-        
     }
 }
