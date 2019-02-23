@@ -201,8 +201,8 @@ public class Player extends Character {
      * @param: enemy this is the enemy that has damaged the play either melee or range
      * If health is dropped to 0 or less game over return to menu
      */
-    public void takeDamage(Enemy enemy){
-        currentHealth = currentHealth - enemy.damage;
+    public void takeDamage(int enemyDmg){
+        currentHealth = currentHealth - enemyDmg;
         Texture damaged = new Texture();
         Texture currentTexture = this.t;
         try{
