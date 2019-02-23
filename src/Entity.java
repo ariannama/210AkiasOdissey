@@ -6,16 +6,15 @@ import org.jsfml.system.Vector2f;
 
 public abstract class Entity {
     public Texture t;
-    public Sprite s;
-    public RenderWindow window;
+    public Sprite sprite;
 
     public Entity(Texture t){
         this.t = t;
-        s = new Sprite(t);
+        sprite = new Sprite(t);
     }
 
     public Sprite getSprite(){
-        return s;
+        return sprite;
     }
 
     public Texture getTexture(){
@@ -25,14 +24,14 @@ public abstract class Entity {
     public abstract void collision();
 
     public float getSpriteX() {
-        return s.getPosition().x;
+        return sprite.getPosition().x;
 
     }
     public float getSpriteY() {
-        return s.getPosition().y;
+        return sprite.getPosition().y;
     }
 
     public FloatRect getSpriteGlobalBounds(){
-        return s.getGlobalBounds();
+        return sprite.getGlobalBounds();
     }
 }

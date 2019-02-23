@@ -5,23 +5,22 @@ import org.jsfml.graphics.Texture;
 
 public abstract class Character extends Entity{
 
-    private int damage;
-    private int moveSpeed;
+    protected int damage;
+    protected int moveSpeed;
     protected double currentHealth;
-    private int maxHealth;
+    protected int maxHealth;
 
-    public Character(Texture t, int dmg, int mS, double cH, int maxH){
+    protected Character(Texture t, int dmg, int mS, int maxH){
         super(t);
         this.damage = dmg;
         this.moveSpeed = mS;
-        this.currentHealth = cH;
-        this.maxHealth = maxH;
+        this.currentHealth = this.maxHealth = maxH;
     }
 
     public abstract void move();
 
     public abstract void attack();
-
+/*
     public void calcMove(){
         float x = getSpriteX();
         float y = getSpriteY();
@@ -89,5 +88,5 @@ public abstract class Character extends Entity{
     public int getMaxHealth()
     {
         return maxHealth;
-    }
+    }*/
 }
