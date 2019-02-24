@@ -23,7 +23,7 @@ import org.jsfml.graphics.*;
  */
 public class Menu {
 	
-	private Sprite backg, backg2;
+	private Sprite backg, backg2, story;
 	private RectangleShape b1, b2, t1;
 	private RenderWindow w;
 	private float backgX, backgX2;
@@ -36,15 +36,25 @@ public class Menu {
         w = rw;
 		
         //Setting the icon of the game
-        Image img = new Image();
-        Path p1 = Paths.get("..\\images\\icon.png");
-        try {
-            img.loadFromFile(p1);
-        } catch (IOException e) {
+//        Image img = new Image();
+//        Path p1 = Paths.get("..//images//icon.png");
+//        try {
+//            img.loadFromFile(p1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        w.setIcon(img);
+
+        //Setting initial storyboard
+        Texture storyboard = new Texture();
+        Path p6 = Paths.get("..\\images\\storyboard.png");
+        try{
+            storyboard.loadFromFile(p6);
+        } catch (IOException e){
             e.printStackTrace();
         }
-        w.setIcon(img);
-
+        story = new Sprite();
+        story.setTexture(storyboard);
         //Setting the background and title
         Texture bg = new Texture();
 		Texture bg2 = new Texture();
@@ -52,8 +62,8 @@ public class Menu {
         Vector2f l1 = new Vector2f(728, 84);
         t1 = new RectangleShape(l1);
         t1.setPosition(148, 40);
-        Path p2 = Paths.get("..\\images\\BG1.jpg");
-        Path p3 = Paths.get("..\\images\\AKIAS-ODYSSEY.png");
+        Path p2 = Paths.get("\\images\\BG1.jpg");
+        Path p3 = Paths.get("C:\\Users\\marrocu\\210AkiasOdissey\\images\\AKIAS-ODYSSEY.png");
         try {
             bg.loadFromFile(p2);
             bg2.loadFromFile(p2);
@@ -83,8 +93,8 @@ public class Menu {
         b2.setPosition(362, 350);
         Texture but1 = new Texture();
         Texture but2 = new Texture();
-        Path p4 = Paths.get("..\\images\\continue-button.png");
-        Path p5 = Paths.get("..\\images\\new-button.png");
+        Path p4 = Paths.get("\\images\\continue-button.png");
+        Path p5 = Paths.get("C:\\Users\\marrocu\\210AkiasOdissey \\images\\new-button.png");
         try {
             but1.loadFromFile(p4);
             but2.loadFromFile(p5);
@@ -98,17 +108,27 @@ public class Menu {
 	}
 	
 	public void runMenu(){
-		boolean menuOpen = true;
+		boolean menuOpen = false;
 		
 		Music bgMusic = new Music();
-        Path p6 = Paths.get("../sounds/HC.flac");
+        Path p7 = Paths.get("../sounds/HC.flac");
         try {
-            bgMusic.openFromFile(p6);
+            bgMusic.openFromFile(p7);
         } catch (IOException e) {
             e.printStackTrace();
         }
         bgMusic.setLoop(true);
         bgMusic.play();
+
+        while(w.isOpen() == true && menuOpen == false) {
+            w.draw(story);
+        }
+            for(Event event :w.pollEvents()){
+                if(Keyboard.isKeyPressed(Keyboard.Key.SPACE)){
+                    menuOpen = true;
+                }
+        }
+
         while(w.isOpen() == true && menuOpen == true){
 			float windowbg1diff = backgX - w.getSize().x;
 			if(backgX >= x){
