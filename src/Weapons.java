@@ -1,6 +1,5 @@
-import org.jsfml.graphics.Texture;
 import org.jsfml.graphics.Sprite;
-
+import org.jsfml.graphics.Texture;
 import java.nio.file.Paths;
 
 /*
@@ -21,6 +20,10 @@ public class Weapons extends Items{
     private boolean wand;
     private Element element;
 
+    public void pickup(){
+        this.sprite.setPosition(400000,400000);
+    }
+
     /*
     * These are the four elements
      */
@@ -28,31 +31,51 @@ public class Weapons extends Items{
         WATER, EARTH, FIRE, WIND
     }
 
+    public char getWant(){
+        if(wand){
+            return 'W';
+        }
+        else return 'S';
+    }
+
     /*
-    * Returns an integer value depending on the element
+    * Returns a texture depending on the element
      */
-    public int getElement(){
+    public Texture getProjectile(){
+        Texture water = new Texture();
+        Texture earth = new Texture();
+        Texture fire = new Texture();
+        Texture air = new Texture();
+        try{
+            water.loadFromFile(Paths.get("..//images//ice_projectile.png"));
+            earth.loadFromFile(Paths.get("..//images//rock_projectile.png"));
+            fire.loadFromFile(Paths.get("..//projectile_fire.png"));
+            air.loadFromFile(Paths.get("..//wind_projectile.png"));
+        }
+        catch (Exception e){
+            System.out.println("Projectile texture failed to load " + e);
+        }
+
         if(Element.WATER == element) {
-            return 0;
+            return water;
         }else if(Element.EARTH == element){
-            return 1;
+            return earth;
         }else if(Element.FIRE == element){
-            return 2;
-        }else{return 3;}
+            return fire;
+        }else{return air;}
     }
 
     /*
      * This is the constructor method for Weapons
-     * @param s is the sprite you will be using
-     * @param t is the texture you will be using
+     * @param t is the blank texture that will be changed depending on the weapon number
      * @param x is the float position on the x axis to spawn in the window
      * @param y is the float position on the y axis to spawn in the window
      * @param weaponNum is the weapon number that has different weapon relative to its number
      */
-    public Weapons(Sprite newWeapon, Texture newWeaponTexture,float x,float y,int weaponNum){
+    public Weapons(Texture blank,float x,float y,int weaponNum){
 
-        super(newWeapon,newWeaponTexture,"newWeapon");
-        newWeapon.setPosition(x,y);
+        super(blank,"newWeapon");
+        this.sprite.setPosition(x,y);
         if(weaponNum>4){
             this.wand = true;
             this.weaponDamage = 1;
@@ -86,14 +109,14 @@ public class Weapons extends Items{
         Texture fs = new Texture();
         Texture as = new Texture();
         try{
-            ww.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\waterWand.png"));
-            ew.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\earthWand.png"));
-            fw.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\fireWand.png"));
-            aw.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\windWand.png"));
-            ws.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\waterStaff.png"));
-            es.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\earthStaff.png"));
-            fs.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\fireStaff.png"));
-            as.loadFromFile(Paths.get("C:\\Users\\sony\\Documents\\210images\\windStaff.png"));
+            ww.loadFromFile(Paths.get("..\\images\\waterWandPedestal.png"));
+            ew.loadFromFile(Paths.get("..\\images\\earthWandPedestal.png"));
+            fw.loadFromFile(Paths.get("..\\images\\fireWandPedestal.png"));
+            aw.loadFromFile(Paths.get("..\\images\\windWandPedestal.png"));
+            ws.loadFromFile(Paths.get("..\\images\\waterStaffPedestal.png"));
+            es.loadFromFile(Paths.get("..\\images\\earthStaffPedestal.png"));
+            fs.loadFromFile(Paths.get("..\\images\\fireStaffPedestal.png"));
+            as.loadFromFile(Paths.get("..\\images\\windStaffPedestal.png"));
         }
         catch (Exception e){
             System.out.println(e);
@@ -117,5 +140,5 @@ public class Weapons extends Items{
             }else{sprite.setTexture(as);}
         }
     }
-    
+
 }
